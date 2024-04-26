@@ -1,0 +1,25 @@
+services:
+  server:
+    image: itzg/minecraft-server
+    tty: true
+    stdin_open: true
+    ports:
+      - "31415:25565"
+    environment:
+      EULA: "TRUE"
+      MOD_PLATFORM: "MODRINTH"
+      MODRINTH_MODPACK: "theblckbird-nerdpack"
+      VERSION: "LATEST"
+      MODRINTH_EXCLUDE_FILES: |
+        entity_model_features
+        entity_texture_features
+
+      MODRINTH_OVERRIDES_EXCLUSIONS: |
+        mods/citresewn-*.jar
+
+      MODRINTH_FORCE_SYNCHRONIZE: "true"
+
+      MEMORY: 5G
+    restart: unless-stopped
+    volumes:
+      - ./data:/data
