@@ -5,10 +5,13 @@ services:
     stdin_open: true
     ports:
       - "31415:25565"
+      - "3876:3876"
+
     environment:
       EULA: "TRUE"
       MOD_PLATFORM: "MODRINTH"
-      MODRINTH_MODPACK: "theblckbird-nerdpack"
+      # MODRINTH_MODPACK: "theblckbird-nerdpack"
+      MODRINTH_MODPACK: "/modpack.mrpack"
       VERSION: "LATEST"
       MODRINTH_EXCLUDE_FILES: |
         entity_model_features
@@ -23,3 +26,4 @@ services:
     restart: unless-stopped
     volumes:
       - ./data:/data
+      - ./nerdpack.mrpack:/modpack.mrpack
